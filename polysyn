@@ -1,0 +1,42 @@
+Benchmark,Result,Time (seconds)
+berkeley, SUCCESS, 600
+cohencu, SUCCESS, 600 
+cohendiv, SUCCESS, 6.792
+euclidex2, SUCCESS, 600.005
+fermat2, SUCCESS, 10.277
+firefly, SUCCESS, 600.004
+freire1, SUCCESS, 70.439
+freire2, SUCCESS, 600.005
+illinois, SUCCESS, 600.004
+lcm, SUCCESS, 17.109
+mannadiv, SUCCESS, 600.005
+mesi, SUCCESS, 600.007
+moesi, SUCCESS, 18.322 unsat
+petter, SUCCESS, 4.454
+readerswriters, SUCCESS, 600.007
+sqrt, SUCCESS, 600.004
+wensley, SUCCESS, 600.005
+z3sqrt, SUCCESS, 600.008
+
+
+mono
+
+Benchmark,Result,Time (seconds)
+berkeley, SUCCESS, 600.005
+cohencu, SUCCESS, 66.432
+cohendiv, SUCCESS, 3.453
+euclidex2, SUCCESS, 49.703
+fermat2, SUCCESS, 6.580
+firefly, SUCCESS, 600.005
+freire1, SUCCESS, 20.166
+freire2, SUCCESS, 600.005
+illinois, SUCCESS, 600.005
+lcm, SUCCESS, 6.276
+mannadiv, SUCCESS, 8.251
+mesi, SUCCESS, 600.005
+moesi, SUCCESS, 600.004
+petter, SUCCESS, 1.935
+readerswriters, SUCCESS, 45.509
+sqrt, SUCCESS, 600.006
+wensley, SUCCESS, 81.017
+z3sqrt, SUCCESS, 34.281
