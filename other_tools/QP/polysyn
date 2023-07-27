@@ -18,8 +18,7 @@ sqrt, SUCCESS, 600.004
 wensley, SUCCESS, 600.005
 z3sqrt, SUCCESS, 600.008
 
-
-mono
+# stronger monomial template
 
 Benchmark,Result,Time (seconds)
 berkeley, SUCCESS, 600.005
