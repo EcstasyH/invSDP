@@ -1,0 +1,178 @@
+(set-logic LIA)
+
+( declare-const a Int )
+( declare-const a! Int )
+( declare-const b Int )
+( declare-const b! Int )
+( declare-const c Int )
+( declare-const c! Int )
+( declare-const u Int )
+( declare-const u! Int )
+( declare-const v Int )
+( declare-const v! Int )
+( declare-const x Int )
+( declare-const x! Int )
+( declare-const y Int )
+( declare-const y! Int )
+( declare-const tmp Int )
+( declare-const tmp! Int )
+
+( declare-const a_0 Int )
+( declare-const b_0 Int )
+( declare-const c_0 Int )
+( declare-const u_0 Int )
+( declare-const u_1 Int )
+( declare-const u_2 Int )
+( declare-const u_3 Int )
+( declare-const v_0 Int )
+( declare-const v_1 Int )
+( declare-const v_2 Int )
+( declare-const v_3 Int )
+( declare-const x_0 Int )
+( declare-const x_1 Int )
+( declare-const x_2 Int )
+( declare-const x_3 Int )
+( declare-const y_0 Int )
+( declare-const y_1 Int )
+( declare-const y_2 Int )
+( declare-const y_3 Int )
+
+( define-fun inv-f( ( a Int )( b Int )( c Int )( u Int )( v Int )( x Int )( y Int )( tmp Int ) ) Bool
+SPLIT_HERE_asdfghjklzxcvbnmqwertyuiop
+)
+
+( define-fun pre-f ( ( a Int )( b Int )( c Int )( u Int )( v Int )( x Int )( y Int )( tmp Int )( a_0 Int )( b_0 Int )( c_0 Int )( u_0 Int )( u_1 Int )( u_2 Int )( u_3 Int )( v_0 Int )( v_1 Int )( v_2 Int )( v_3 Int )( x_0 Int )( x_1 Int )( x_2 Int )( x_3 Int )( y_0 Int )( y_1 Int )( y_2 Int )( y_3 Int ) ) Bool
+	( and
+		( = a a_0 )
+		( = b b_0 )
+		( = c c_0 )
+		( = u u_0 )
+		( = v v_0 )
+		( = x x_0 )
+		( = y y_0 )
+		( = a_0 x_0 )
+		( = b_0 y_0 )
+		( = u_0 b_0 )
+		( = v_0 0 )
+		( = c_0 ( * a_0 b_0 ) )
+	)
+)
+
+( define-fun trans-f ( ( a Int )( b Int )( c Int )( u Int )( v Int )( x Int )( y Int )( tmp Int )( a! Int )( b! Int )( c! Int )( u! Int )( v! Int )( x! Int )( y! Int )( tmp! Int )( a_0 Int )( b_0 Int )( c_0 Int )( u_0 Int )( u_1 Int )( u_2 Int )( u_3 Int )( v_0 Int )( v_1 Int )( v_2 Int )( v_3 Int )( x_0 Int )( x_1 Int )( x_2 Int )( x_3 Int )( y_0 Int )( y_1 Int )( y_2 Int )( y_3 Int ) ) Bool
+	( or
+		( and
+			( = u_1 u )
+			( = v_1 v )
+			( = x_1 x )
+			( = y_1 y )
+			( = u_1 u! )
+			( = v_1 v! )
+			( = x_1 x! )
+			( = y_1 y! )
+			( = a a! )
+			( = b b! )
+			( = c c! )
+			( = u u! )
+			( = v v! )
+			( = x x! )
+			( = y y! )
+			(= tmp tmp! )
+		)
+		( and
+			( = u_1 u )
+			( = v_1 v )
+			( = x_1 x )
+			( = y_1 y )
+			( <= y_1 x_1 )
+			( = x_2 ( - x_1 y_1 ) )
+			( = v_2 ( + v_1 u_1 ) )
+			( = u_2 u_1 )
+			( = v_3 v_2 )
+			( = x_3 x_2 )
+			( = y_2 y_1 )
+			( = u_2 u! )
+			( = v_3 v! )
+			( = x_3 x! )
+			( = y_2 y! )
+			(= a a_0 )
+			(= a! a_0 )
+			(= b b_0 )
+			(= b! b_0 )
+			(= c c_0 )
+			(= c! c_0 )
+			(= tmp tmp! )
+		)
+		( and
+			( = u_1 u )
+			( = v_1 v )
+			( = x_1 x )
+			( = y_1 y )
+			( not ( <= y_1 x_1 ) )
+			( = y_3 ( - y_1 x_1 ) )
+			( = u_3 ( + u_1 v_1 ) )
+			( = u_2 u_3 )
+			( = v_3 v_1 )
+			( = x_3 x_1 )
+			( = y_2 y_3 )
+			( = u_2 u! )
+			( = v_3 v! )
+			( = x_3 x! )
+			( = y_2 y! )
+			(= a a_0 )
+			(= a! a_0 )
+			(= b b_0 )
+			(= b! b_0 )
+			(= c c_0 )
+			(= c! c_0 )
+			(= tmp tmp! )
+		)
+	)
+)
+
+( define-fun post-f ( ( a Int )( b Int )( c Int )( u Int )( v Int )( x Int )( y Int )( tmp Int )( a_0 Int )( b_0 Int )( c_0 Int )( u_0 Int )( u_1 Int )( u_2 Int )( u_3 Int )( v_0 Int )( v_1 Int )( v_2 Int )( v_3 Int )( x_0 Int )( x_1 Int )( x_2 Int )( x_3 Int )( y_0 Int )( y_1 Int )( y_2 Int )( y_3 Int ) ) Bool
+	( or
+		( not
+			( and
+				( = a a_0)
+				( = b b_0)
+				( = c c_0)
+				( = u u_1)
+				( = v v_1)
+				( = x x_1)
+				( = y y_1)
+			)
+		)
+		( not
+			( and
+				( not ( = c_0 ( + ( * x_1 u_1 ) ( * y_1 v_1 ) ) ) )
+			)
+		)
+	)
+)
+SPLIT_HERE_asdfghjklzxcvbnmqwertyuiop
+( assert ( not
+	( =>
+		( pre-f a b c u v x y tmp a_0 b_0 c_0 u_0 u_1 u_2 u_3 v_0 v_1 v_2 v_3 x_0 x_1 x_2 x_3 y_0 y_1 y_2 y_3  )
+		( inv-f a b c u v x y tmp )
+	)
+))
+
+SPLIT_HERE_asdfghjklzxcvbnmqwertyuiop
+( assert ( not
+	( =>
+		( and
+			( inv-f a b c u v x y tmp )
+			( trans-f a b c u v x y tmp a! b! c! u! v! x! y! tmp! a_0 b_0 c_0 u_0 u_1 u_2 u_3 v_0 v_1 v_2 v_3 x_0 x_1 x_2 x_3 y_0 y_1 y_2 y_3 )
+		)
+		( inv-f a! b! c! u! v! x! y! tmp! )
+	)
+))
+
+SPLIT_HERE_asdfghjklzxcvbnmqwertyuiop
+( assert ( not
+	( =>
+		( inv-f a b c u v x y tmp  )
+		( post-f a b c u v x y tmp a_0 b_0 c_0 u_0 u_1 u_2 u_3 v_0 v_1 v_2 v_3 x_0 x_1 x_2 x_3 y_0 y_1 y_2 y_3 )
+	)
+))
+

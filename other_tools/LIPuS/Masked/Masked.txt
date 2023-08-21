@@ -1,0 +1,15 @@
+berkeley:None	None
+cohencu:None	None
+cohendiv:None	None
+euclidex2:None	None
+fermat2:None	None
+firefly:None	None
+freire1:None	None
+illinois:None	None
+lcm:None	None
+mannadiv:None	None
+mesi:None	None
+moesi:851.7287662029266	And(Or(0*i + -1*s < 4, -3*i*m*m*m == -3))
+petter:None	None
+readerswriters:None	None
+sqrt:None	None

@@ -1,0 +1,15 @@
+berkeley:None	None
+cohencu:None	None
+cohendiv:142.0008659362793	And(Or(-1*y<=0), Or(q*y + r + -1*x == 0, q == 0), Or(q*y + r + -1*x == 0,r + -1*x == 0))
+euclidex2:None	None
+fermat2:None	None
+firefly:None	None
+freire1:459.96944904327393	And(Or(d + e + i + s + -1*t == 0), Or(-1*d + -1*e + -1*i + -1*s <= -1), Or(-1*d <= 0), Or(e <= 1), Or(-1*e <= 0), Or(i <= 0), Or(s <= 0))
+illinois:None	None
+lcm:None	None
+mannadiv:None	None
+mesi:592.4944400787354	And(t + -1i == 0, e == 0, m == 0, s == 0)
+moesi:117.186890268	And(Or(0*i + -1*s < 4, -3*i*m*m*m == -3))
+petter:None	None
+readerswriters:None	None
+sqrt:421.0008659362793	And(Or(su == 1), Or(-a <= 0), Or(a == 0, -1*n <= -1), Or(a == 0, -1*t <= -1), Or(-n <= 0, -a <= 0), Or(-n <= 0, -1*t <= -1), Or(-1*t <= -1, -a <= 0), Or(-1*t <= -1, -1*n <= -1))

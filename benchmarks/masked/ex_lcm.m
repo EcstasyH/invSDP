@@ -1,6 +1,6 @@
 sdpvar a b x y u v c;
 xdim = 7;
-vars = [a, b, x, y, u, v c];
+vars = [a, b, x, y, u, v, c];
 
 % loop condition 
 loop_cond = 0;

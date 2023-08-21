@@ -67,7 +67,7 @@ for i = 1: length(vars)
 end
 
 % pre-condition
-pre_cond_eq = [0, 0, 0, vo, vi, vi+vo];
+pre_cond_eq = [0, 0, 0, vi, vo, vi+vo];
 pre_cond_ineq = [-1];
 
 % post-condtion
