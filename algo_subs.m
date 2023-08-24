@@ -3,61 +3,26 @@ tic;
 yalmip('clear')
 
 % benchmarks
+ex_berkeley;
 
 % ex_berkeley;
-% 2.4s
-
 % ex_cohencu;
-% 1.1s
-
 % ex_cohendiv; 
-% 1.0s>>
-
 % ex_euclidex2;
-% 4.8s
-
-%ex_fermat2;
-% 1.5s
-
+% ex_fermat2;
 % ex_firefly;
-% 4.7
-
 % ex_freire1;
-% 0.6s
-
 % ex_freire2;
-% 1.0s
-
 % ex_illinois;
-% 7.3s
-
 % ex_lcm;  
-% 2.8s
-
 % ex_mannadiv;
-% 1.4s
-
-%ex_mesi;
-% 2.7s
-
+% ex_mesi;
 % ex_moesi;
-% 1.3s
-
 % ex_petter;
-% 0.6s
-
 % ex_readerswriters;
-% 3.3s
-
-ex_sqrt;
-% 1.0s ***
-% fail if two post condition
-
-%ex_wensley;
-% 4.2s
-
-%ex_z3sqrt
-% 1.45s
+% ex_sqrt;
+% ex_wensley;
+% ex_z3sqrt
 
 
 epsilon = 0; % relaxation in computation, can be removed
