@@ -6,14 +6,14 @@ vars = [x1, x2];
 % Program body
 %
 % branches
-loop_cond = -x2;
+loop_cond = 0;
 
 branch_num = 1;
-f1 = [  8/9*x1 - 1/18 *x2; 
-        0.1*x1 + 0.9*x2];
+f1 = [  x1^2+x2-1; 
+        (x1^2+x2-1)*x2+x2+1];
 
 f_list = [f1];
-guard_cond_list = [-1];
+guard_cond_list = [x1^2 + x2^2 - 3];
 
 
 % variable range
@@ -25,32 +25,25 @@ end
 
 % pre-conditions
 pre_cond_eq = [x1,x2]; 
-pre_cond_ineq = [(x1-0.5)^2 + (x2-0.5)^2-0.25^2 ];
+pre_cond_ineq = [x1^2 + x2^2 - 1];
 % post-condtion
-post_cond_ineq = [x2^2-4];
+post_cond_ineq = [x1^2 + x2^2 - 4];
 
 % invariant template
 
-a = sdpvar(1,2);
+a = sdpvar(1,3);
 for i = 1: length(a)
         a_range(2*i-1) = 0;
-        a_range(2*i)   = 1;
+        a_range(2*i)   = 10;
 end
 
 % a_range = [ -10, 10, -10,  10,-10,10,-10,10];
 
-inv = a(1)*x1^2 + a(2)*x2^2 -1; 
-inv_ineq = [-x2];
+inv = a(1)*x1^2 + a(2)*x2^2 + a(3)*x1-1; 
+inv_ineq = [];
 % Parameters in SOS constraints translation
 
-adeg = 3;  
-% deg 1=0.8
-% deg 2=1.9
-% deg 3=1.9
 
-
-
-M = -10;
-sdeg = 4; % max deg in SOS
-degrees = [sdeg,sdeg, 2,2];
+sdeg = 6; % max deg in SOS
+degrees = [sdeg, sdeg,sdeg, 4,4];
 epsilon = 0; % tolerance for >= 

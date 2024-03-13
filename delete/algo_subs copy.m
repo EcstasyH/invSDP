@@ -22,10 +22,10 @@ yalmip('clear')
 % ex_firefly;
 % 4.7
 
-% ex_freire1;
+ex_freire1;
 % 0.6s
 
-% ex_freire2;
+%ex_freire2;
 % 1.0s
 
 % ex_illinois;
@@ -49,7 +49,7 @@ yalmip('clear')
 % ex_readerswriters;
 % 3.3s
 
-ex_sqrt;
+% ex_sqrt;
 % 1.0s ***
 % fail if two post condition
 

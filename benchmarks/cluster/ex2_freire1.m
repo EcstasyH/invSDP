@@ -7,7 +7,7 @@ loop_cond = r - x;
 
 % while body
 branch_num = 1;
-f1 = [  x - 0.8*r ; % x
+f1 = [  x - r ; % x
         r + 1 ; % r
         y       % a
 ]; 
@@ -37,8 +37,8 @@ a_range = [-2,2,-2,2];
 inv = 2*x + a(2)*r^2 - a(1)*r - y;
 inv_ineq = [-x, -r];
 
-adeg = 1;
-
+% adeg = 1;
+% deg =1 : 1.1s
 
 sdeg = 2;
 degrees = [sdeg, sdeg, 2,2,2];

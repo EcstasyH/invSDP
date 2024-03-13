@@ -8,7 +8,7 @@ loop_cond = n-5;
 % while body
 branch_num = 1;
 f1 = [  n + 1, 
-        x + 6*n + 6,
+        x + 5.5*n + 5.5,
 ]; 
 f_list = [f1]; 
 % guard conditions
@@ -35,13 +35,6 @@ inv = a(1)*(n+a(2))^2 + a(3) - x;
 inv_ineq = [-n]; % -a<=0
 
 
-adeg = 3; 
-% deg=1: 1.4s
-% deg=2: 4.1s
-% deg=3: 3.9s -> found
-
-
-M = -10;
 sdeg = 4; % max deg in SOS
-degrees = [sdeg, sdeg, 2,2,2];
+degrees = [sdeg, sdeg, sdeg,2,2];
 epsilon = 0; % tolerance for >= 

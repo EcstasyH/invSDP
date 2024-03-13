@@ -1,5 +1,10 @@
+function algo_cluster(benchmark, adeg)
+
 tic
 yalmip('clear')
+epsilon = 0;
+
+run(strcat('ex2_',benchmark,'.m'))
 
 % Read benchmark
 
@@ -10,15 +15,23 @@ yalmip('clear')
 % ex2_freire12;
 % ex2_freire13;
 
-ex2_example;
+% ex2_examplenew;
 % ex2_unicycle;
 % ex2_circuit;
 % ex2_overview; 
 
 epsilon = 0;
-M = -10;
+M = -1;
 
 lvars = [a, vars];
+
+
+% if degree(f)>= adeg
+%     sdeg = degree(f)+1;
+% else
+%     sdeg = adeg+1;
+% end
+% degrees = sdeg;
 
 % Set p_a template and compute objective function
 %
@@ -36,13 +49,11 @@ end
 
 inv = replace(inv, a, a_scaled);
 
-
 moments = [];
 for i = 1:length(a_monomials)
     moments(i) = compute_moment(a, a_monomials(i));
 end
 obj = dot(moments,coef_p);
-
 
 % make box constraints for a_var and x_var
 for i = 1:length(a)
@@ -63,17 +74,17 @@ sdp_cons = {lvars, sdp_var, constraints, sigma_cell, sigma_coef_cell, tail};
 
 % pre cond
 q = replace(inv, vars, pre_cond_eq);
-sdp_cons = translateSOSnew([pre_cond_ineq, range_cond], q - p_a, sdp_cons, sdeg, epsilon,degrees);
+sdp_cons = translateSOSnew([pre_cond, range_cond], q - p_a, sdp_cons, sdeg, epsilon,degrees);
 
 % inductive
-for j = 1:branch_num
-    sdp_cons = translateSOSnew([inv, inv_ineq, loop_cond, guard_cond_list(j), range_cond], replace(inv, vars, f_list(:,j))-p_a, sdp_cons, sdeg, epsilon,degrees);
+sz = size(f);
+for j = 1:sz(1)
+    sdp_cons = translateSOSnew([inv, inv_ineq, loop_cond, guard_cond(j), range_cond], replace(inv, vars, f(j,:))-p_a, sdp_cons, sdeg, epsilon,degrees);
 end
 
 %post
-for j = 1:length(post_cond_ineq)
-    % -loopcond
-    sdp_cons = translateSOSnew([inv, range_cond, -loop_cond], post_cond_ineq(j)-p_a, sdp_cons, sdeg, epsilon,degrees);
+for j = 1:length(post_cond)
+    sdp_cons = translateSOSnew([inv, range_cond, -loop_cond], post_cond(j)-p_a, sdp_cons, sdeg, epsilon,degrees);
 end
 
 % M
@@ -88,7 +99,7 @@ tail = sdp_cons{6};
 
 options = sdpsettings('solver','mosek','verbose', 0, 'sos.newton',1,'sos.congruence',1);
 
-toc 
+% toc 
 fprintf("Begin Solving...\n");
 
 diagnostics=  solvesos(constraints, obj, options, sdp_var);   
@@ -98,36 +109,21 @@ if diagnostics.problem == 0
     sol = 1;
     p_val = double(coef_p);
     for i = 1:length(p_val)
-        if abs(p_val(i)) <= 10^(-5)
-            p_val(i) = 0.0;
-        end
+        p_val(i) = round(p_val(i), 5);
     end
     p_a_val = dot(p_val,a_monomials);
-    
-    
     s = string(sdisplay(dot(p_val,a_monomials)));
     s = strrep(s, 'a(1)', 'a1');
     s = strrep(s, 'a(2)', 'a2');
     s = strrep(s, 'a(3)', 'a3');
     s = strrep(s, 'a(4)', 'a4');
     display(s);
-    %display(a_range);
-    %{
-    fprintf('A solution is found: %f\n',p_a_val); 
-    if p_a_val <= 0
-        fprintf('Minimal Point: \n');
-        for i = 1:adim
-            min = a_range(2*i-1);
-            max = a_range(2*i);
-            a_val(i) = (max-min)/2*a_val(i)+(max+min)/2;
-            fprintf('a%d = %f \n',i, a_val(i));    
-        end
-    end
-    %}
 else
     fprintf('No solution is found:\n'); 
 end
 toc
+    return
+end
 
 % Local Functions
 
@@ -160,7 +156,7 @@ function sdp_cons = translateSOSnew(pre_list, post, sdp_cons, sdeg, epsilon, deg
     tail = sdp_cons{6};
     sum = 0;
     for i = 1:length(pre_list)
-        [sigma_cell{tail}, sigma_coef_cell{tail}] = polynomial(vars, degrees);    
+        [sigma_cell{tail}, sigma_coef_cell{tail}] = polynomial(vars, degrees-degree(pre_list(i)));    
         sum = sum + sigma_cell{tail} * pre_list(i);
         constraints = [constraints, sos(sigma_cell{tail})];
         sdp_var = [sdp_var; sigma_coef_cell{tail}];

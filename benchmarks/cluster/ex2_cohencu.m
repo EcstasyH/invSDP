@@ -35,11 +35,6 @@ inv = a(1)*n^2 + a(2)*n + a(3) - x;
 inv_ineq = [-n]; % -a<=0
 
 
-adeg = 2;  
-% deg = 1: 3.5s 
-% deg = 2: 4.3s -> found
-
-M = -10;
 sdeg = 4; % max deg in SOS
 degrees = [sdeg, sdeg, 2,2,2];
 epsilon = 0; % tolerance for >= 

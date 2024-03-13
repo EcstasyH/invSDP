@@ -34,11 +34,8 @@ post_cond_ineq = [-1];
 a = sdpvar(1,2);
 a_range = [-2,2,-2,2];
 
-inv = 2*x + a(2)*r^2 - a(1)*r - y;
+inv = 2*x + a(2)*(r+a(1))^2 - y;
 inv_ineq = [-x, -r];
 
-adeg = 1;
-% deg =1 : 1.1s
-
-sdeg = 2;
+sdeg = 4;
 degrees = [sdeg, sdeg, 2,2,2];
