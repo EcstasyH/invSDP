@@ -103,7 +103,7 @@ sigma_coef_cell = sdp_cons{5};
 tail = sdp_cons{6};
 
 % options = sdpsettings('solver','sdpt3','verbose', 0);
-options = sdpsettings('solver','mosek','verbose', 0, 'sos.newton',1,'sos.congruence',1);
+options = sdpsettings('solver','mosek','verbose', 0, 'sos.newton',1,'sos.congruence',1, 'mosek.MSK_DPAR_ANA_SOL_INFEAS_TOL', 10^(-6));
 diagnostics =  solvesdp(constraints, 0, options, sdp_var);
 
 % fprintf(strcat('======', benchmark_name, "======\n"));
@@ -113,7 +113,7 @@ if diagnostics.problem == 0
     for j = 1:length(zvars)    
         coef_p_val = double(coef(:,j));
         for i = 1:length(coef_p_val)
-            coef_p_val(i) = round(coef_p_val(i),5);
+            coef_p_val(i) = round(coef_p_val(i), 5);
         end
         inv_val = dot(coef_p_val, monolist(yvars, inv_deg));
         inv_val_s = evalc('sdisplay(inv_val)');

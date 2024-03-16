@@ -8,6 +8,18 @@ run(strcat('ex2_',benchmark,'.m'))
 epsilon = 0;
 M = -1;
 
+% fullPath = mfilename('fullpath');
+
+% % Use the fileparts function to extract the directory
+% [dirPath, ~, ~] = fileparts(fullPath);
+
+% % Display the directory path
+% disp(dirPath);
+
+% fileID = fopen(strcat(dirPath,'/results/cluster/',benchmark,'.txt'),'w+');
+
+
+
 lvars = [a, vars];
 
 % Set p_a template and compute objective function
@@ -40,7 +52,7 @@ for i = 1:length(a)
     a_range_cond(2*i) = a(i)-1;
 end
 range_cond= [a_range_cond, range_cond];
-
+% fprintf(fileID,string(range_cond));
 % Encode SOS constraints
 %
 sdp_var = [coef_p];
@@ -102,6 +114,8 @@ if diagnostics.problem == 0
 else
     fprintf('No solution is found:\n'); 
 end
+
+
 toc
 end
 % Local Functions

@@ -8,9 +8,8 @@
 
 ## Running Commands
 
-The `algo_under.m` and `algo_subs.m` files correspond to our algorithms in Sec. 3 and Sec.5 respectively.
+The `algo_cluster.m` and `algo_mask.m` files correspond to our algorithms in Sec. 3 and Sec.5 respectively.
 The benchmarks are provided in the `Benchmarks` folder.
-For example, if you want to run our algorithm in Sec. 5 with program `mannadiv`, you can simply change the `ex_berkeley` to `ex_mannadiv` at line 6 and run the `algo_subs.m` file. 
 
 ## Run Benchmarks for Other Tools
 We provide benchmarks for LIPuS (https://github.com/Santiago-Yu/LIPuS), Polysynth (in our paper, referred to as QP https://github.com/hitarths/polysynth) and Z3. 

@@ -32,15 +32,10 @@ post_cond_ineq = [x2^2-4];
 % invariant template
 
 a = sdpvar(1,2);
-for i = 1: length(a)
-        a_range(2*i-1) = 0;
-        a_range(2*i)   = 1;
-end
-
-% a_range = [ -10, 10, -10,  10,-10,10,-10,10];
+a_range = [ 0, 1, 0, 1];
 
 inv = a(1)*x1^2 + a(2)*x2^2 -1; 
-inv_ineq = [-x2];
+inv_ineq = [];
 % Parameters in SOS constraints translation
 
 sdeg = 4; % max deg in SOS

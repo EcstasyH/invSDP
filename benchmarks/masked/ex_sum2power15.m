@@ -33,4 +33,4 @@ inv_deg = d;
 % Number of zvars: 1
 % Number of parameters: 136
 % No feasible solution is found.
-% Elapsed time is 200.312448 seconds.
+% Elapsed time is 200.298137 seconds.
