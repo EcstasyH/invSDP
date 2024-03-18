@@ -29,6 +29,6 @@ pre_cond = [r, -r, w, -w, k-k0, k0-k, -c1, -c2, -k0];
 % post-condtion
 post_cond = [-1];
 
-inv_ineq = [r*w];
+inv_ineq = [r*w, -r*w];
 
 inv_deg = 2;

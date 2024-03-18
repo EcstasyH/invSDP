@@ -30,6 +30,6 @@ pre_cond = [vm, -vm, vs, -vs, ve, -ve, vt-vi, vi-vt, 1-vi];
 % post-condtion
 post_cond = [-1];
 
-inv_ineq = [];
+inv_ineq = [-vm, -vs, -ve, -vi];
 
 inv_deg = 1;

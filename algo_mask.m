@@ -22,7 +22,7 @@ yalmip('clear')
 
 run(strcat('ex_',benchmark,'.m'))
 
-epsilon = 0; % numerical tolerence
+epsilon = 0;%10^(-5); % numerical tolerence
 
 
 % store information of SOS polynomials
@@ -61,20 +61,14 @@ sdp_cons = {[yvars, zvars], sdp_var, constraints, sigma_cell, sigma_coef_cell, t
 
 % pre-condition
 for i = 1: length(zvars)
-    % temp = replace(zvars(i) - inv_eq(i), [yvars, zvars], pre_cond_eq);
-    % sdisplay(temp);
-    % sdp_cons = translateSOS([pre_cond], temp, sdp_cons, sdeg, epsilon);
-    % sdp_cons = translateSOS([pre_cond], -temp, sdp_cons, sdeg, epsilon);
     sdp_cons = translateSOS([pre_cond], zvars(i) - inv_eq(i), sdp_cons, sdeg, epsilon);
     sdp_cons = translateSOS([pre_cond], inv_eq(i) - zvars(i), sdp_cons, sdeg, epsilon);
 end
 for i = 1: length(inv_ineq)
-    % temp = replace(inv_ineq(i), [yvars, zvars], pre_cond_eq);
-    % sdp_cons = translateSOS([pre_cond], temp, sdp_cons, sdeg, epsilon);
     sdp_cons = translateSOS([pre_cond], inv_ineq(i), sdp_cons, sdeg, epsilon);
 end
     
-%inductive-condition
+% inductive-condition
 sz = size(f);
 for i = 1:sz(1)
     for j = 1:length(zvars)
@@ -85,7 +79,7 @@ for i = 1:sz(1)
         sdp_cons = translateSOS([inv_ineq, loop_cond, guard_cond(i,:)], right-left, sdp_cons, sdeg, epsilon);
     end
     for j = 1:length(inv_ineq)
-        sdp_cons = translateSOS([inv_ineq, loop_cond, guard_cond(i,:)], replace(inv_ineq, yvars, f(i,1:length(yvars))), sdp_cons, sdeg, epsilon);
+        sdp_cons = translateSOS([inv_ineq, loop_cond, guard_cond(i,:)], replace(inv_ineq(j), yvars, f(i,1:length(yvars))), sdp_cons, sdeg, epsilon);
     end
 end
 
@@ -102,8 +96,8 @@ sigma_cell  = sdp_cons{4};
 sigma_coef_cell = sdp_cons{5};
 tail = sdp_cons{6};
 
-% options = sdpsettings('solver','sdpt3','verbose', 0);
-options = sdpsettings('solver','mosek','verbose', 0, 'sos.newton',1,'sos.congruence',1, 'mosek.MSK_DPAR_ANA_SOL_INFEAS_TOL', 10^(-6));
+% options = sdpsettings('solver','sdpa','verbose', 0);
+options = sdpsettings('solver','mosek','verbose', 0, 'sos.newton',1,'sos.congruence',1, 'mosek.MSK_DPAR_ANA_SOL_INFEAS_TOL', 10^(-4));
 diagnostics =  solvesdp(constraints, 0, options, sdp_var);
 
 % fprintf(strcat('======', benchmark_name, "======\n"));
@@ -126,7 +120,7 @@ if diagnostics.problem == 0
         fprintf(strcat(name(j+length(yvars))," = ", inv_val_s));
     end
 else
-    fprintf('No feasible solution is found.\n')
+    fprintf('FAIL! No feasible solution is found.\n')
     sol = 0;
 end
 toc; 
@@ -144,7 +138,7 @@ function sdp_cons = translateSOS(pre_list, post, sdp_cons, sdeg, epsilon)
         [sigma_cell{tail}, sigma_coef_cell{tail}] = polynomial(vars, sdeg);    
         % [sigma_cell{tail}, sigma_coef_cell{tail}] = polynomial(vars, sdeg-degree(pre_list(i)));    
         sum = sum + sigma_cell{tail} * pre_list(i);
-        constraints = [constraints, sos(sigma_cell{tail})];
+        constraints = [constraints, sos(sigma_cell{tail}+epsilon)];
         sdp_var = [sdp_var; sigma_coef_cell{tail}];
         tail = tail + 1;
     end

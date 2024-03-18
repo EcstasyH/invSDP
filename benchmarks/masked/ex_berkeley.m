@@ -10,10 +10,10 @@ loop_cond = -1;
 
 % guard conditions
 guard_cond = [
-       1-vi,
-       1-vi,
-       1-vn,
-       1-vu
+       1-vi, 
+       1-vi, 
+       1-vn, 
+       1-vu, 
 ];
 
 % while body
@@ -25,12 +25,12 @@ f = [
 ];
   
 % pre-condition
-pre_cond = [vu, -vu, ve, -ve, vn, -vn, vt-vi, vi-vt];
+pre_cond = [vu, -vu, ve, -ve, vn, -vn, vt-vi, vi-vt, -vi];
 
 % post-condtion
 post_cond = [-1];
 
 % invariant 
-inv_ineq = [-1];%[-vu, -ve, -vn, -vi];
+inv_ineq = [-vi, -ve, -vn, -vu];
 
-inv_deg = 2;
+inv_deg = 1;

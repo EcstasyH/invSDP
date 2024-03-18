@@ -27,11 +27,11 @@ f =  [
 
 
 % pre-condition
-pre_cond = [vm,-vm,vs,-vs, ve, -ve, vt-vi-vo, vi+vo-vt];
+pre_cond = [vm,-vm, vs, -vs, ve, -ve, 1-vi, 1-vo, vt-vi-vo, vi+vo-vt];
 
 % post-condtion
 post_cond = [-1];
 
-inv_ineq = [];
+inv_ineq = [-vm, -vs, -ve, -vi, -vo];
 
 inv_deg = 1;
