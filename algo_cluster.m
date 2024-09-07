@@ -1,24 +1,11 @@
 function algo_cluster(benchmark, adeg)
 
-tic
 yalmip('clear')
 
 run(strcat('ex2_',benchmark,'.m'))
 
 epsilon = 0;
 M = -1;
-
-% fullPath = mfilename('fullpath');
-
-% % Use the fileparts function to extract the directory
-% [dirPath, ~, ~] = fileparts(fullPath);
-
-% % Display the directory path
-% disp(dirPath);
-
-% fileID = fopen(strcat(dirPath,'/results/cluster/',benchmark,'.txt'),'w+');
-
-
 
 lvars = [a, vars];
 
@@ -38,13 +25,11 @@ end
 
 inv = replace(inv, a, a_scaled);
 
-
 moments = [];
 for i = 1:length(a_monomials)
     moments(i) = compute_moment(a, a_monomials(i));
 end
 obj = dot(moments,coef_p);
-
 
 % make box constraints for a_var and x_var
 for i = 1:length(a)
@@ -91,7 +76,7 @@ tail = sdp_cons{6};
 options = sdpsettings('solver','mosek','verbose', 0, 'sos.newton',1,'sos.congruence',1);
 
 % toc 
-fprintf("Begin Solving...\n");
+% fprintf("Begin Solving...\n");
 
 diagnostics=  solvesos(constraints, obj, options, sdp_var);   
 
@@ -115,8 +100,6 @@ else
     fprintf('No solution is found:\n'); 
 end
 
-
-toc
 end
 % Local Functions
 

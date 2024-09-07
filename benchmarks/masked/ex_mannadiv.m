@@ -8,9 +8,9 @@ loop_cond = - y3;
 
 % guard conditions
 guard_cond = [
-    y2+1-x2, x2-y2-1;
-    y2+2-x2, -1;
-    x2-y2, -1;
+    [y2+1-x2, x2-y2-1],
+    [y2+2-x2, -1],
+    [x2-y2, -1]
 ];
 
 % while body

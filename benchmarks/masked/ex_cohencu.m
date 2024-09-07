@@ -12,7 +12,7 @@ loop_cond = -1;
 guard_cond = [-1];
 
 % while body
-f = [ n + 1, x + y, y + z, z + 6 ]; 
+f = [ [n + 1, x + y, y + z, z + 6] ]; 
 
 % pre-condition
 pre_cond = [n, -n, x, -x, 1-y, y-1, z-6, 6-z];

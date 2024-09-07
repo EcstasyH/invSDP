@@ -13,7 +13,7 @@ guard_cond = [
        1-vi, 
        1-vi, 
        1-vn, 
-       1-vu, 
+       1-vu
 ];
 
 % while body

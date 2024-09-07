@@ -8,13 +8,13 @@ loop_cond = 0;
 
 % guard conditions
 guard_cond = [
-    y-x;
-    x-y
+    [y-x],
+    [x-y]
 ];
 
 % while body
 f = [
-    [  a, b, x-y, y, u, v+u, c]; 
+    [  a, b, x-y, y, u, v+u, c],
     [  a, b, x, y-x, u+v, v, c]
 ];
 

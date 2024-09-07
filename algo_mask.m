@@ -1,29 +1,11 @@
 function algo_mask(benchmark)
-% ex_berkeley;
-% ex_cohencu;
-% ex_cohendiv; 
-% ex_euclidex2;
-% ex_fermat2;
-% ex_firefly;
-% ex_freire1;
-% ex_freire2; % NS
-% ex_illinois;
-% ex_lcm;
-% ex_mannadiv;
-% ex_mesi;
-% ex_moesi;
-% ex_petter;
-% ex_readerswriters;
-% ex_sqrt; %NS
-% ex_wensley; %NS
-% ex_z3sqrt
+
 tic;
 yalmip('clear')
 
 run(strcat('ex_',benchmark,'.m'))
 
 epsilon = 0;%10^(-5); % numerical tolerence
-
 
 % store information of SOS polynomials
 inv_eq = [];
@@ -99,17 +81,38 @@ tail = sdp_cons{6};
 % options = sdpsettings('solver','sdpa','verbose', 0);
 options = sdpsettings('solver','mosek','verbose', 0, 'sos.newton',1,'sos.congruence',1, 'mosek.MSK_DPAR_ANA_SOL_INFEAS_TOL', 10^(-4));
 diagnostics =  solvesdp(constraints, 0, options, sdp_var);
+elapsedTime = toc;
+% print results into files
+fileID = fopen(strcat('results/mask/', benchmark,'.txt'), 'w');
 
-% fprintf(strcat('======', benchmark_name, "======\n"));
 if diagnostics.problem == 0
-    fprintf('A feasible solution is found.\n')
+    fprintf(fileID, 'success\n%.2f\n', elapsedTime);
+
     sol = 1;
     for j = 1:length(zvars)    
+        fprintf(fileID, strcat(name(j+length(yvars)), '\n'));
+
         coef_p_val = double(coef(:,j));
+        monomials_str = sdisplay(monolist(yvars, inv_deg));
+        for i = 1:length(monomials_str)
+            for k = 1:length(yvars)
+                internal_name = evalc(strcat('sdisplay(', name(k), ')'));
+                internal_name = internal_name(1:length(internal_name)-1);
+                monomials_str{i} = strrep(monomials_str{i}, internal_name, name(k));
+            end
+        end
+
         for i = 1:length(coef_p_val)
+            % disp(rat(coef_p_val(i),1e-5));
+            fprintf(fileID, strcat(rat(coef_p_val(i),1e-5), '\t') );
+            fprintf(fileID, strcat(monomials_str{i}, '\t'));
             coef_p_val(i) = round(coef_p_val(i), 5);
         end
+        fprintf(fileID, '\n');
+
+
         inv_val = dot(coef_p_val, monolist(yvars, inv_deg));
+        
         inv_val_s = evalc('sdisplay(inv_val)');
         for i = 1:length(yvars)
             ss = evalc(strcat('sdisplay(', name(i), ')'));
@@ -118,12 +121,14 @@ if diagnostics.problem == 0
         end
         % inv_val_s = inv_val_s(1:length(inv_val_s)-1);
         fprintf(strcat(name(j+length(yvars))," = ", inv_val_s));
+
     end
 else
-    fprintf('FAIL! No feasible solution is found.\n')
+    fprintf(fileID, 'fail\n%.2f\n', elapsedTime);
     sol = 0;
 end
-toc; 
+fprintf('time: %f.2\n', elapsedTime);
+fclose(fileID);
 end
 
 function sdp_cons = translateSOS(pre_list, post, sdp_cons, sdeg, epsilon)

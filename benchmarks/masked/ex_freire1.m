@@ -12,7 +12,9 @@ loop_cond = r - x;
 guard_cond = [-1];
 
 % while body
-f = [ x - r, r + 1, a];
+f = [ 
+    [x - r, r + 1, a]
+];
 
 % pre-condition
 pre_cond = [-a, x-a/2, a/2-x, r, -r];

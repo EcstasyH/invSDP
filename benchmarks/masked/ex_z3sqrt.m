@@ -8,8 +8,8 @@ loop_cond = [ve-2*vp*vr];
 
 % guard conditions
 guard_cond = [
-        vp+2*vq-2*vr;
-        2*vr-2*vp-vq
+        [vp+2*vq-2*vr],
+        [2*vr-2*vp-vq]
 ];
 
 % while body

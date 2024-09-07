@@ -12,7 +12,7 @@ guard_cond = [-1];
 
 % while body
 f = [  
-        n + 1, s + n^5;
+        [n + 1, s + n^5]
 ]; 
 
 % pre-condition

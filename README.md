@@ -8,8 +8,9 @@
 
 ## Running Commands
 
-The `algo_cluster.m` and `algo_mask.m` files correspond to our algorithms in Sec. 3 and Sec.5 respectively.
-The benchmarks are provided in the `Benchmarks` folder.
+1. Run `run_all` in Matlab to execute our algorithms.
+2. Use mathematica to verify the numerical results, see in `verification.nb` notebook file. 
+
 
 ## Run Benchmarks for Other Tools
 We provide benchmarks for LIPuS (https://github.com/Santiago-Yu/LIPuS), Polysynth (in our paper, referred to as QP https://github.com/hitarths/polysynth) and Z3. 

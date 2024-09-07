@@ -10,13 +10,13 @@ loop_cond = -1;
 
 % guard conditions
 guard_cond = [    
-        vd, vs, ve, 1-vi;
-        1-vi, 1-vd, -1, -1;
-        1-vi, 1-vs, -1, -1;
-        1-vi, 1-ve, -1, -1;
-        1-ve, -1, -1, -1;
-        1-vs, vs-1, -1, -1;
-        1-vi, -1, -1, -1
+        [vd, vs, ve, 1-vi],
+        [1-vi, 1-vd, -1, -1],
+        [1-vi, 1-vs, -1, -1],
+        [1-vi, 1-ve, -1, -1],
+        [1-ve, -1, -1, -1],
+        [1-vs, vs-1, -1, -1],
+        [1-vi, -1, -1, -1]
 ];
 
 % while body

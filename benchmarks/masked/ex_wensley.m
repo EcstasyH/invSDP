@@ -8,8 +8,8 @@ loop_cond = [ve-vd];
 
 % guard conditions
 guard_cond = [
-    vp-va-vb;
-    va+vb-vp
+    [vp-va-vb],
+    [va+vb-vp]
 ];
 
 % while body

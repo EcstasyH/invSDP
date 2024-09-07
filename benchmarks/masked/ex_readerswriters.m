@@ -9,10 +9,10 @@ loop_cond = -r*w;
 
 % guard conditions
 guard_cond = [
-        w,-w,
-        r,-r,
-        w,-w,
-        r,-r,
+        [w,-w],
+        [r,-r],
+        [w,-w],
+        [r,-r]
 ];
 
 % while body

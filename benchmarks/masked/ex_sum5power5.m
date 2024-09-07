@@ -14,7 +14,7 @@ loop_cond = -1;
 guard_cond = [-1];
 
 % while body
-f = [ n1+1, n2+1, n3+1, n4+1, n5+1,s+(n1+n2+n3+n4+n5+5)^d-(n1+n2+n3+n4+n5)^d];
+f = [ [n1+1, n2+1, n3+1, n4+1, n5+1,s+(n1+n2+n3+n4+n5+5)^d-(n1+n2+n3+n4+n5)^d]];
 
 % pre-condition
 pre_cond = [s-(n1+n2+n3+n4+n5)^d, (n1+n2+n3+n4+n5)^d-s];

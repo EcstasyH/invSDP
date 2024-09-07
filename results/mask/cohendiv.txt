@@ -1,0 +1,4 @@
+success
+0.55
+vx
+0	1	0	vy	-0	vd	1	vr	0	vq	0	vy^2	-0	vy*vd	-0	vd^2	-0	vy*vr	0	vd*vr	0	vr^2	1	vy*vq	0	vd*vq	-0	vr*vq	-0	vq^2	

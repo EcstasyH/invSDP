@@ -9,10 +9,10 @@ loop_cond = -1;
 
 % guard conditions
 guard_cond = [    
-        1-vi;
-        1-ve;
-        1-vs;
-        1-vi;
+        [1-vi],
+        [1-ve],
+        [1-vs],
+        [1-vi]
 ];
 
 % while body

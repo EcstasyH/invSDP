@@ -10,7 +10,7 @@ loop_cond = [su-n];
 guard_cond = [-1];
 
 % while body
-f = [ su + t + 2, t + 2, n, a + 1]; 
+f = [ [su + t + 2, t + 2, n, a + 1]]; 
 
 % pre-condition
 pre_cond = [a, -a, su-1, 1-su, t-1, 1-t,-n]; 

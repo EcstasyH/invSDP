@@ -13,7 +13,7 @@ guard_cond = [-1];
 
 % while body
 branch_num = 1;
-f = [ vy, vd, vr - vy*vd, vq + vd, vx ]; 
+f = [ [vy, vd, vr - vy*vd, vq + vd, vx ]]; 
 
 % pre-condition
 pre_cond = [vr-vx, vx-vr, vq-0, 0-vq];

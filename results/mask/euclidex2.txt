@@ -1,0 +1,6 @@
+success
+2.58
+va
+-0	1	0	vx	0	vy	0	vp	-0	vq	0	vr	0	vs	-0	vx^2	0	vx*vy	0	vy^2	1	vx*vp	0	vy*vp	0	vp^2	0	vx*vq	0	vy*vq	0	vp*vq	0	vq^2	0	vx*vr	1	vy*vr	-0	vp*vr	0	vq*vr	0	vr^2	-0	vx*vs	0	vy*vs	-0	vp*vs	-0	vq*vs	0	vr*vs	0	vs^2	
+vb
+0	1	0	vx	0	vy	0	vp	0	vq	0	vr	0	vs	0	vx^2	0	vx*vy	-0	vy^2	0	vx*vp	-0	vy*vp	0	vp^2	1	vx*vq	0	vy*vq	-0	vp*vq	0	vq^2	0	vx*vr	0	vy*vr	0	vp*vr	0	vq*vr	0	vr^2	0	vx*vs	1	vy*vs	-0	vp*vs	-0	vq*vs	0	vr*vs	0	vs^2	

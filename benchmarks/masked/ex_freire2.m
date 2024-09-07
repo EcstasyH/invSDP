@@ -12,7 +12,9 @@ loop_cond = s - x;
 guard_cond = [-1];
 
 % while body
-f = [  x - s, r + 1 , s + 6*r + 3 , a];
+f = [  
+    [x - s, r + 1 , s + 6*r + 3 , a]
+];
 
 % pre-condition
 pre_cond = [x-a, a-x, r-1, 1-r, s-3.25, 3.25-s, -a];

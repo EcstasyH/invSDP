@@ -1,0 +1,4 @@
+success
+1.07
+va
+-0	1	-0	ve	0	vr	0	vq	0	vp	-0	ve^2	0	ve*vr	-0	vr^2	0	ve*vq	-0	vr*vq	1	vq^2	0	ve*vp	2	vr*vp	-0	vq*vp	-0	vp^2	
